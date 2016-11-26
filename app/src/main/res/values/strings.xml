@@ -1,0 +1,124 @@
+<resources>
+    <string name="app_name">The Timeless Grounds</string>
+    <string name="FirstLaunchMessage">Welcome to The Timeless Grounds. Please enter what you would like your character to be named below.</string>
+    <string-array name="map_row_0">
+        <item>grass</item>
+        <item>tree</item>
+        <item>grass</item>
+        <item>grass</item>
+        <item>grass</item>
+        <item>grass</item>
+        <item>grass</item>
+        <item>grass</item>
+        <item>tree</item>
+        <item>grass</item>
+    </string-array>
+    <string-array name="map_row_1">
+        <item>grass</item>
+        <item>grass</item>
+        <item>grass</item>
+        <item>tree</item>
+        <item>grass</item>
+        <item>grass</item>
+        <item>grass</item>
+        <item>tree</item>
+        <item>tree</item>
+        <item>grass</item>
+    </string-array>
+    <string-array name="map_row_2">
+        <item>path</item>
+        <item>path</item>
+        <item>path</item>
+        <item>grass</item>
+        <item>grass</item>
+        <item>grass</item>
+        <item>grass</item>
+        <item>grass</item>
+        <item>grass</item>
+        <item>grass</item>
+    </string-array>
+    <string-array name="map_row_3">
+        <item>grass</item>
+        <item>grass</item>
+        <item>path</item>
+        <item>grass</item>
+        <item>tree</item>
+        <item>grass</item>
+        <item>tree</item>
+        <item>grass</item>
+        <item>path</item>
+        <item>path</item>
+    </string-array>
+    <string-array name="map_row_4">
+        <item>tree</item>
+        <item>grass</item>
+        <item>path</item>
+        <item>path</item>
+        <item>grass</item>
+        <item>grass</item>
+        <item>grass</item>
+        <item>path</item>
+        <item>path</item>
+        <item>tree</item>
+    </string-array>
+    <string-array name="map_row_5">
+        <item>grass</item>
+        <item>grass</item>
+        <item>grass</item>
+        <item>path</item>
+        <item>path</item>
+        <item>path</item>
+        <item>path</item>
+        <item>path</item>
+        <item>grass</item>
+        <item>grass</item>
+    </string-array>
+    <string-array name="map_row_6">
+        <item>grass</item>
+        <item>tree</item>
+        <item>grass</item>
+        <item>grass</item>
+        <item>tree</item>
+        <item>grass</item>
+        <item>grass</item>
+        <item>grass</item>
+        <item>grass</item>
+        <item>grass</item>
+    </string-array>
+    <string-array name="map_row_7">
+        <item>grass</item>
+        <item>grass</item>
+        <item>grass</item>
+        <item>grass</item>
+        <item>grass</item>
+        <item>tree</item>
+        <item>tree</item>
+        <item>grass</item>
+        <item>tree</item>
+        <item>grass</item>
+    </string-array>
+    <string-array name="map_row_8">
+        <item>grass</item>
+        <item>grass</item>
+        <item>tree</item>
+        <item>grass</item>
+        <item>grass</item>
+        <item>grass</item>
+        <item>grass</item>
+        <item>tree</item>
+        <item>grass</item>
+        <item>grass</item>
+    </string-array>
+    <string-array name="map_row_9">
+        <item>tree</item>
+        <item>grass</item>
+        <item>grass</item>
+        <item>tree</item>
+        <item>grass</item>
+        <item>grass</item>
+        <item>grass</item>
+        <item>grass</item>
+        <item>grass</item>
+        <item>tree</item>
+    </string-array>
+</resources>
