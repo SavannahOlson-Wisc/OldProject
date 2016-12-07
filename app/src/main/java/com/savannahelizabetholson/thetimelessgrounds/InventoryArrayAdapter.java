@@ -15,8 +15,16 @@ import java.util.ArrayList;
 
 public class InventoryArrayAdapter extends ArrayAdapter<InventoryItem> {
 
+    //Instance Variables
     private ArrayList<InventoryItem> inventoryItems;
 
+    /**
+     * Constructor for adapter
+     *
+     * @param context The context
+     * @param resource The resource?
+     * @param objects The array of inventory items to be adapted
+     */
     public InventoryArrayAdapter(Context context, int resource, ArrayList<InventoryItem> objects) {
 
         super(context, resource, objects);
@@ -25,6 +33,14 @@ public class InventoryArrayAdapter extends ArrayAdapter<InventoryItem> {
 
     }
 
+    /**
+     * This method sets up each row of the list view
+     *
+     * @param position the row position
+     * @param convertView no idea what this is
+     * @param parent the parent view?
+     * @return a view?
+     */
     public View getView(int position, View convertView, ViewGroup parent) {
 
         View view = convertView;

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditTextPreference android:title="username"
+        android:key="name"
+        android:summary="Username to be identified by"></EditTextPreference>
+    <ListPreference     android:title="Map"
+        android:summary="Select the map to be used"
+        android:key="map"
+        android:defaultValue="Standard"
+        android:entries="@array/maps"
+        android:entryValues="@array/maps" />
+</PreferenceScreen>

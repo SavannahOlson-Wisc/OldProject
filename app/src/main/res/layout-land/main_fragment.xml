@@ -163,7 +163,7 @@
             android:clickable="true"
             app:fabSize="mini"
             app:srcCompat="@android:drawable/ic_menu_add"
-            android:id="@+id/floatingActionButton"
+            android:id="@+id/menuButton"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"

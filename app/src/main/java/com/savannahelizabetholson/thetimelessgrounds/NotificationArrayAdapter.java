@@ -17,6 +17,13 @@ public class NotificationArrayAdapter extends ArrayAdapter<String> {
 
     private ArrayList<String> objects;
 
+    /**
+     * This constructor constructs the Notification array adapter
+     *
+     * @param context the context
+     * @param resource something?
+     * @param objects the array list of strings that should be displayed
+     */
     public NotificationArrayAdapter(Context context, int resource, ArrayList<String> objects) {
 
         super(context, resource, objects);
@@ -25,6 +32,14 @@ public class NotificationArrayAdapter extends ArrayAdapter<String> {
 
     }
 
+    /**
+     *  This method loads the data for each line
+     *
+     * @param position the line's position
+     * @param convertView no idea?
+     * @param parent the parent view
+     * @return the configured view
+     */
     public View getView(int position, View convertView, ViewGroup parent) {
 
         View view = convertView;

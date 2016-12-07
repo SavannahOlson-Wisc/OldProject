@@ -1,9 +1,12 @@
 package com.savannahelizabetholson.thetimelessgrounds;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.text.InputType;
@@ -56,7 +59,23 @@ public class MainFragment extends Fragment {
     private Button leftButton;
     private Button rightButton;
     private Button backButton;
+    private FloatingActionButton menuButton;
 
+    //Callback
+    private OnMenuButtonTappedListener callback;
+
+    /**
+     * This interface is inplemented by the activity to be used as a callback
+     */
+    public interface OnMenuButtonTappedListener {
+        public void menuButtonSelected();
+    }
+
+    /**
+     * The on create method is default
+     *
+     * @param savedInstanceState the saved instance state
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,13 +83,23 @@ public class MainFragment extends Fragment {
 
     }
 
+    /**
+     *
+     * This method is where most of the setup takes place.
+     *
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         final View view = inflater.inflate(R.layout.main_fragment, container, false);
 
         //Setup
-        preferences = this.getActivity().getSharedPreferences("app_preferences", Context.MODE_PRIVATE);
+        //preferences = this.getActivity().getSharedPreferences("app_preferences", Context.MODE_PRIVATE);
+        preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         notifications = new ArrayList<String>();
         invenory = new ArrayList<InventoryItem>();
         initializePosition();
@@ -89,6 +118,7 @@ public class MainFragment extends Fragment {
         leftButton = (Button) view.findViewById(R.id.leftbutton);
         rightButton = (Button) view.findViewById(R.id.rightButton);
         backButton = (Button) view.findViewById(R.id.backButton);
+        menuButton = (FloatingActionButton) view.findViewById(R.id.menuButton);
 
         updatePositionText();
 
@@ -109,6 +139,8 @@ public class MainFragment extends Fragment {
             }
 
         });
+
+        //On click listeners for interaction buttons
 
         interactButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -255,6 +287,7 @@ public class MainFragment extends Fragment {
         //Check for name being stored
         String username = preferences.getString("name", "name_not_set");
 
+        // Then if it is not stored prompt user for their name
         if (username.equals("name_not_set")) {
             AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
             builder.setTitle("Please enter your name!");
@@ -293,10 +326,23 @@ public class MainFragment extends Fragment {
             Toast.makeText(getContext(), "Welcome Back " + username, Toast.LENGTH_LONG).show();
         }
 
+        //Onclick event to open the preferences screen
+        menuButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                callback.menuButtonSelected();
+            }
+        });
+
+
         return view;
     }
 
     //Custom Methods
+
+    /**
+     * This method initalizes the map and position
+     */
     private void initializePosition() {
 
         //TODO: Refactor so is shorter
@@ -362,6 +408,9 @@ public class MainFragment extends Fragment {
 
     }
 
+    /**
+     * This method loads the current position data into the location array
+     */
     private void loadPosition() {
 
         String ahead;
@@ -402,6 +451,9 @@ public class MainFragment extends Fragment {
         location.put("current", current);
     }
 
+    /**
+     * This method updates the text for the current position
+     */
     private void updatePositionText() {
 
         SharedPreferences.Editor editor = preferences.edit();
@@ -421,6 +473,9 @@ public class MainFragment extends Fragment {
 
     }
 
+    /**
+     * This method loads the inventory from the database
+     */
     private void loadInventory() {
 
         InventoryDatabaseHandler db = InventoryDatabaseHandler.getInstance(getContext());
@@ -428,6 +483,25 @@ public class MainFragment extends Fragment {
 
         invenory = db.getInventory();
 
+    }
+
+    /**
+     * In here I wire up the callback.
+     *
+     * @param activity the activity
+     */
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+        // This makes sure that the container activity has implemented
+        // the callback interface. If not, it throws an exception.
+        try {
+            callback = (OnMenuButtonTappedListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString()
+                    + " must implement OnMenuButtonTappedListener");
+        }
     }
 
 }

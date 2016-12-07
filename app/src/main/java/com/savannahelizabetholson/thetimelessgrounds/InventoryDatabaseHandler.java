@@ -31,6 +31,12 @@ public class InventoryDatabaseHandler extends SQLiteOpenHelper {
     //Instance of the method
     private static InventoryDatabaseHandler handler;
 
+    /**
+     * This is a method called to obtain an instance of the InventoryDatabaseHandler
+     *
+     * @param context the context
+     * @return
+     */
     public static InventoryDatabaseHandler getInstance(Context context) {
 
         if (handler == null) {
@@ -41,6 +47,11 @@ public class InventoryDatabaseHandler extends SQLiteOpenHelper {
 
     }
 
+    /**
+     * This method is private so that the only way people can get an instance is through the proper method
+     *
+     * @param context the context.
+     */
     private InventoryDatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -99,6 +110,12 @@ public class InventoryDatabaseHandler extends SQLiteOpenHelper {
 
     // CRUD METHODS
 
+    /**
+     * This method adds an inventory item
+     *
+     * @param item an inventory item object
+     * @return row number maybe?
+     */
     public int addInventoryItem(InventoryItem item) {
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -111,6 +128,12 @@ public class InventoryDatabaseHandler extends SQLiteOpenHelper {
 
     }
 
+    /**
+     * This method is used to get an inventory item
+     *
+     * @param id the id of the item you want to get
+     * @return the item requested
+     */
     public InventoryItem getInventoryItem(int id) {
         String query = "Select * FROM " + TABLE_INVENTORY + " WHERE " + COLUMN_ID + " =  \"" + id + "\"";
 
@@ -137,6 +160,11 @@ public class InventoryDatabaseHandler extends SQLiteOpenHelper {
 
     }
 
+    /**
+     * This method gets all items
+     *
+     * @return An array list containing all of the inventory items
+     */
     public ArrayList<InventoryItem> getInventory() {
 
         ArrayList<InventoryItem> inventoryItems = new ArrayList<InventoryItem>();
@@ -160,6 +188,12 @@ public class InventoryDatabaseHandler extends SQLiteOpenHelper {
 
     }
 
+    /**
+     * This method is used to remove an item
+     *
+     * @param id this is the id of the item that should be removed
+     * @return a boolean indicating success or failure
+     */
     public boolean removeItem(int id) {
 
         SQLiteDatabase db = this.getWritableDatabase();
